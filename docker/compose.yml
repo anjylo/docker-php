@@ -4,14 +4,15 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: test-app
+    container_name: app
     restart: always
     working_dir: /var/www/
     volumes:
       - ../src:/var/www
+
   nginx:
     image: nginx:1.19-alpine
-    container_name: test-nginx
+    container_name: nginx
     restart: always
     ports:
       - 8000:80
@@ -21,4 +22,4 @@ services:
 
 networks:
   default:
-    name: test-network
+    name: app-network
