@@ -20,10 +20,9 @@ class Router
         return $this->register('post', $route, $action);
     }
 
-    public function resolve()
+    public function resolve(string $uri, string $method)
     {
-        $uri = $_SERVER['REQUEST_URI']; 
-        $method = strtolower($_SERVER['REQUEST_METHOD']);
+        $method = strtolower($method);
 
         $route = explode('?', $uri)[0];       
         $action = $this->routes[$method][$route] ?? null;

@@ -2,3 +2,5 @@ docker/storage/*
 
 src/vendor/
 src/.env
+
+src/vendor/composer/*
