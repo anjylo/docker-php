@@ -16,10 +16,8 @@ $router = (new App\Core\Router())
         ->post('/user/upload', [App\Controllers\UserController::class, 'store']);
 
 (new App\App(
-    [
-        'uri' => $_SERVER['REQUEST_URI'], 
-        'method' => $_SERVER['REQUEST_METHOD']
-    ],
+    ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']],
     $router, 
     $config
-))->run();
+))
+->run();
