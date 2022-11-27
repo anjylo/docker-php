@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip
 
+# install mysql to pdo drivers
 RUN docker-php-ext-install pdo pdo_mysql 
 
 # set php.ini
@@ -29,6 +30,10 @@ USER ${UID}:${GID}
 
 WORKDIR /var/www
 
-# RUN composer install 
+# install composer packages and run autoload
 
+# RUN composer require vlucas/phpdotenv
+# RUN composer install 
 # RUN composer dump-autoload
+
+
