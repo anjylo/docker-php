@@ -1,0 +1,4 @@
+docker/storage/*
+
+src/vendor/
+src/.env
