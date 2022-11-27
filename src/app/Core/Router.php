@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Core;
 
 use App\Exceptions\Router\{RouteDuplicateException, RouteNotFoundException};
 
-class RouterService
+class Router
 {
     private $routes;
 
@@ -26,7 +26,7 @@ class RouterService
         $method = strtolower($_SERVER['REQUEST_METHOD']);
 
         $route = explode('?', $uri)[0];       
-        $action = $this->routes[$method][$route];
+        $action = $this->routes[$method][$route] ?? null;
 
         try {
             if (!$action) {
@@ -50,7 +50,9 @@ class RouterService
             throw new RouteNotFoundException();
             
         } catch (RouteNotFoundException $e) {
-            return $e->getMessage();
+            http_response_code(404);
+
+            return View::make('404', ['message' => $e->getMessage()]);
         }
     }
 
